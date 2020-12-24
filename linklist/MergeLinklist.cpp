@@ -89,6 +89,33 @@ bool hasCycl(list* head)
 	}
 	return false;
 }
+
+list* remove(list* head,int n)
+{
+	list* l1 = head;
+	list* l2 = head;
+	int iCount = 0;
+	while (l2)
+	{
+		l2 = l2->pNext;
+		if (++iCount > n + 1)
+		{
+			l1 = l1->pNext;
+		}
+	}
+	if (n == iCount)
+	{
+		head = head->pNext;
+		delete l1;
+	}
+	else
+	{
+		list* del = l1->pNext;
+		l1->pNext = l1->pNext->pNext;
+		delete del;
+	}
+	return head;
+}
 int main()
 {
 	list* head = nullptr;
@@ -124,10 +151,13 @@ int main()
 
 	//list *mlist = MergList(head, head1);
 
-	bool bret = hasCycl(head);
-	node1->pNext = head1;
+	//bool bret = hasCycl(head);
+	//node1->pNext = head1;
 
 	
 
-	bool bret1 = hasCycl(head1);
+	//bool bret1 = hasCycl(head1);
+
+
+	list* l3 = remove(head1, 3);
 }

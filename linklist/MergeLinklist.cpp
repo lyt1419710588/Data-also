@@ -116,6 +116,23 @@ list* remove(list* head,int n)
 	}
 	return head;
 }
+
+list* getMidNode(list* head)
+{
+	list* p = head;
+	list* q = head;
+
+	while (p->pNext)
+	{
+		p = p->pNext->pNext;
+		if (!p)
+		{
+			return q;
+		}
+		q = q->pNext;
+	}
+	return q;
+}
 int main()
 {
 	list* head = nullptr;
@@ -123,7 +140,7 @@ int main()
 
 	list* head1 = nullptr;
 	list* node1 = nullptr;
-	for (size_t i = 0; i < 6; i++)
+	for (size_t i = 0; i < 3; i++)
 	{
 		if (!head && !head1)
 		{
@@ -159,5 +176,7 @@ int main()
 	//bool bret1 = hasCycl(head1);
 
 
-	list* l3 = remove(head1, 3);
+	//list* l3 = remove(head1, 3);
+
+	list* ret = getMidNode(head1);
 }
